@@ -1,0 +1,54 @@
+type User {
+    id: ID!
+    name: String
+    email: String
+    phone: String
+    city: String
+    orders: [Order]
+}
+
+type Order {
+    id: ID!
+    productName: String
+    address: String
+    quantity: Int
+    price: Float
+    status: String
+    user: User
+}
+
+input UserInput {
+    name: String
+    email: String
+    phone: String
+    city: String
+}
+
+input OrderInput {
+    productName: String!
+    address: String
+    quantity: Int!
+    price: Float!
+    status: String!
+    userId: ID!
+}
+
+type Query {
+    getUserById(id: ID!): User
+    getAllUsers: [User]
+    getOrderById(id: ID!): Order
+    getAllOrders: [Order]
+}
+
+type Mutation {
+#    while taking input one by one
+#    createUser(name: String!, email: String!, phone: String!, city: String!): User
+#    while taking input as object
+    createUser(input: UserInput): User
+    deleteUser(id: ID!): Boolean
+#    while taking input one by one
+#    createOrder(userId: ID!, productName: String!, address: String!, quantity: Int!, price: Float!, status: String!): Order
+#    while taking input as object
+    createOrder(input: OrderInput): Order
+    deleteOrder(id: ID!): Boolean
+}
