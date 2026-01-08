@@ -46,9 +46,11 @@ type Mutation {
 #    while taking input as object
     createUser(input: UserInput): User
     deleteUser(id: ID!): Boolean
+    updateUser(id: ID!, input: UserInput): User
 #    while taking input one by one
 #    createOrder(userId: ID!, productName: String!, address: String!, quantity: Int!, price: Float!, status: String!): Order
 #    while taking input as object
     createOrder(input: OrderInput): Order
+    updateOrder(id: ID!, input: OrderInput): Order
     deleteOrder(id: ID!): Boolean
 }
